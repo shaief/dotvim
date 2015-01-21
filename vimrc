@@ -3,7 +3,7 @@
 " https://github.com/MeirKriheli/dotvim
 " https://github.com/oz123/dude/config_files/vim
 
-
+set nocompatible " Use Vim defaults (much better!)
 
 " ==================================================
 " Basic Settings
@@ -30,6 +30,30 @@ set statusline+=%{fugitive#statusline()} " Git Hotness
 set statusline+=\ [%{&ff}/%Y] " filetype
 set statusline+=\ [%{getcwd()}] " current dir
 set statusline+=%=%-14.(%l,%c%V%)\ %p%% " Right aligned file nav info      "
+
+" In many terminal emulators the mouse works just fine, thus enable it.
+if has('mouse')
+    set mouse=a
+endif
+
+" ==================================================
+" swp files
+" ==================================================
+" Keep swap files out of the working dir
+" Adjust if needed in another dir
+set directory=~/tmp
+
+" ==================================================
+" Fix meta key in terminal
+" fix meta-keys which generate <Esc>a .. <Esc>z
+" ==================================================
+let c='a'
+while c <= 'z'
+    exec "set <A-".c.">=\e".c
+    exec "imap \e".c." <A-".c.">"
+    let c = nr2char(1+char2nr(c))
+endw
+
 
 
 " ==================================================
@@ -61,7 +85,7 @@ match OverLength /\%121v.\+/
 "endif
 
 
-set nocompatible " Use Vim defaults (much better!)
+
 
 set bs=indent,eol,start " allow backspacing over everything in insert mode
 set ai " always set autoindenting on
@@ -102,12 +126,16 @@ Plugin 'gmarik/Vundle.vim'
 " My Bundles here:
 " git wrapper
 Bundle 'tpope/vim-fugitive'
-" A Vim plugin which shows a git diff in the gutter (sign column) 
+" A Vim plugin which shows a git diff in the gutter (sign column)
 Bundle 'airblade/vim-gitgutter'
 " easymotion - as the name suggest :)
-Bundle 'Lokaltog/vim-easymotion' 
+Bundle 'Lokaltog/vim-easymotion'
 " color scheme - solarized
-Bundle 'altercation/vim-colors-solarized'
+" Bundle 'altercation/vim-colors-solarized'
+" color scheme - drakula
+" Plugin 'alem0lars/vim-colorscheme-darcula'
+" colorschemes
+Plugin 'flazz/vim-colorschemes'
 " Autoclose
 Bundle 'Townk/vim-autoclose'
 Plugin 'kien/rainbow_parentheses.vim'
@@ -116,11 +144,12 @@ Bundle 'matze/vim-move'
 " Directories and files tree ==> check lower configuration where it was mapped to <F3>
 Plugin 'scrooloose/nerdtree'
 Plugin 'majutsushi/tagbar'
-
+Plugin 'kien/ctrlp.vim'
 call vundle#end() " required
 filetype plugin indent on " required
 " ======================================================================
 
+colorscheme Monokai
 
 syntax on
 
@@ -136,12 +165,14 @@ map <F3> :NERDTreeToggle<CR>
 
 " highlight cursor line
 set cursorline
- 
+
 let g:gitgutter_sign_added = '+'
 let g:gitgutter_sign_modified = '*'
 let g:gitgutter_sign_removed = '-'
 let g:gitgutter_sign_modified_removed = '+-'
 
+
+" let g:move_key_modifier = 'C'
 
 au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
@@ -171,3 +202,73 @@ imap <C-S-Left> <ESC>:tabp<CR>
 
 
 
+" ==================================================
+" Trailing whitespace handling
+" ==================================================
+" Highlight end of line whitespace.
+highlight WhitespaceEOL ctermbg=red guibg=red
+match WhitespaceEOL /\s\+$/
+
+
+syntax on
+filetype plugin on
+filetype indent plugin on
+
+" ==================================================
+" Basic Mappings
+" ==================================================
+" Maps for jj to act as Esc in insert and command modes
+ino jj <esc>
+cno jj <c-c>
+" One can map ctrl-c to something else if needed
+map <c-c> <Nop>
+imap <c-c> <Nop>
+
+
+" ==================================================
+" Window navigation
+" ==================================================
+" control + vim direction key to navigate windows
+noremap <C-J> <C-W>j
+noremap <C-K> <C-W>k
+noremap <C-H> <C-W>h
+noremap <C-L> <C-W>l
+" control + arrow key to navigate windows
+noremap <C-Down> <C-W>j "
+noremap <C-Up> <C-W>k
+noremap <C-Left> <C-W>h
+noremap <C-Right> <C-W>l
+" <C-TAB> and <C-S-TAB> to switch buffers " in the current window
+noremap <C-TAB> :MBEbn<CR>
+noremap <C-S-TAB> :MBEbp<CR>
+
+
+" ==================================================
+" CtrlP
+" ==================================================
+set wildignore+=*.so,*.swp,*.zip,*.pyc,*.pyo
+let g:ctrlp_custom_ignore = 'node_modules\|bower_components'
+
+au BufEnter *.js :vmap ^_ :s/^/\/\// <Enter> :nohlsearch <Enter> 
+au BufEnter *.py :vmap ^_ :s/^/#/ <Enter> :nohlsearch <Enter>
+
+" tab navigation like firefox
+nnoremap <C-S-tab> :tabprevious<CR>
+nnoremap <C-tab>   :tabnext<CR>
+nnoremap <C-t>     :tabnew<CR>
+inoremap <C-S-tab> <Esc>:tabprevious<CR>i
+inoremap <C-tab>   <Esc>:tabnext<CR>i
+inoremap <C-t>     <Esc>:tabnew<CR>
+
+nnoremap th  :tabfirst<CR>
+nnoremap tj  :tabnext<CR>
+nnoremap tk  :tabprev<CR>
+nnoremap tl  :tablast<CR>
+nnoremap tt  :tabedit<Space>
+nnoremap tn  :tabnext<Space>
+nnoremap tm  :tabm<Space>
+nnoremap td  :tabclose<CR>
+" Alternatively use
+" "nnoremap th :tabnext<CR>
+" "nnoremap tl :tabprev<CR>
+" "nnoremap tn :tabnew<CR>
