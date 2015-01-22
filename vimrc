@@ -145,6 +145,12 @@ Bundle 'matze/vim-move'
 Plugin 'scrooloose/nerdtree'
 Plugin 'majutsushi/tagbar'
 Plugin 'kien/ctrlp.vim'
+
+" Python-mode etc.
+Plugin 'klen/python-mode'
+Plugin 'davidhalter/jedi-vim'
+
+
 call vundle#end() " required
 filetype plugin indent on " required
 " ======================================================================
@@ -242,6 +248,34 @@ noremap <C-Right> <C-W>l
 noremap <C-TAB> :MBEbn<CR>
 noremap <C-S-TAB> :MBEbp<CR>
 
+" ==================================================
+" ==================================================
+
+set clipboard=unnamedplus
+
+" Override go-to.definition key shortcut to Ctrl-]
+let g:pymode_rope_goto_definition_bind = "<C-]>"
+
+" Override run current python file key shortcut to Ctrl-Shift-e
+let g:pymode_run_bind = "<C-S-e>"
+
+" Override view python doc key shortcut to Ctrl-Shift-d
+let g:pymode_doc_bind = "<C-S-d>"
+
+" ==================================================
+" Disable python-mode rope completion (using Jedi)
+" Disable folding
+" Don't trim whitespace on save
+" ==================================================
+let g:pymode_rope_completion = 0
+let g:pymode_folding = 0
+let g:pymode_trim_whitespaces = 0
+
+" ==================================================
+" jedi-vim use splits instead of tabs
+" ==================================================
+let g:jedi#use_tabs_not_buffers = 0
+let g:jedi#use_splits_not_buffers = "right"
 
 " ==================================================
 " CtrlP
