@@ -150,6 +150,9 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'klen/python-mode'
 Plugin 'davidhalter/jedi-vim'
 
+Plugin 'bling/vim-airline'
+
+Plugin 'mattn/emmet-vim'
 
 call vundle#end() " required
 filetype plugin indent on " required
@@ -306,3 +309,30 @@ nnoremap td  :tabclose<CR>
 " "nnoremap th :tabnext<CR>
 " "nnoremap tl :tabprev<CR>
 " "nnoremap tn :tabnew<CR>
+
+" ==================================================
+" Airline
+" ==================================================
+let g:airline#extensions#tabline#enabled = 1
+
+if !exists('g:airline_symbols')
+        let g:airline_symbols = {}
+endif
+
+" unicode symbols
+let g:airline_left_sep = '»'
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '«'
+let g:airline_right_sep = '◀'
+let g:airline_symbols.linenr = '␊'
+let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.paste = 'Þ'
+let g:airline_symbols.paste = '∥'
+let g:airline_symbols.whitespace = 'Ξ'
+
+"" zencoding settings
+" remap zen-leader-key
+" let g:user_emmet_leader_key = '<c-e>'
