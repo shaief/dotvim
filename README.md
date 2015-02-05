@@ -9,7 +9,6 @@ bundles::
 
     git clone https://github.com/shaief/dotvim.git ~/.vim
     ln -s ~/.vim/vimrc ~/.vimrc
-    cd ~/.vim
     git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 Vim extensions:
