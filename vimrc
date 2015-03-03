@@ -84,7 +84,7 @@ match OverLength /\%121v.\+/
 "    set columns=180
 "endif
 
-
+set timeoutlen=1000 ttimeoutlen=10
 
 
 set bs=indent,eol,start " allow backspacing over everything in insert mode
@@ -137,7 +137,7 @@ Bundle 'Lokaltog/vim-easymotion'
 " colorschemes
 Plugin 'flazz/vim-colorschemes'
 " Autoclose
-Bundle 'Townk/vim-autoclose'
+" Bundle 'Townk/vim-autoclose'
 Plugin 'kien/rainbow_parentheses.vim'
 " move lines/blocks like sublime
 Bundle 'matze/vim-move'
@@ -147,7 +147,7 @@ Plugin 'majutsushi/tagbar'
 Plugin 'kien/ctrlp.vim'
 
 " Python-mode etc.
-Plugin 'klen/python-mode'
+" Plugin 'klen/python-mode'
 Plugin 'davidhalter/jedi-vim'
 
 Plugin 'bling/vim-airline'
@@ -158,7 +158,6 @@ call vundle#end() " required
 filetype plugin indent on " required
 " ======================================================================
 
-colorscheme Monokai
 
 syntax on
 
@@ -336,3 +335,4 @@ let g:airline_symbols.whitespace = 'Ξ'
 "" zencoding settings
 " remap zen-leader-key
 " let g:user_emmet_leader_key = '<c-e>'
+colorscheme Monokai
