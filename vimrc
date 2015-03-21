@@ -33,7 +33,7 @@ set statusline+=%=%-14.(%l,%c%V%)\ %p%% " Right aligned file nav info      "
 
 " In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
-    set mouse=a
+set mouse=a
 endif
 
 " ==================================================
@@ -49,9 +49,9 @@ set directory=~/tmp
 " ==================================================
 let c='a'
 while c <= 'z'
-    exec "set <A-".c.">=\e".c
-    exec "imap \e".c." <A-".c.">"
-    let c = nr2char(1+char2nr(c))
+exec "set <A-".c.">=\e".c
+exec "imap \e".c." <A-".c.">"
+let c = nr2char(1+char2nr(c))
 endw
 
 
@@ -86,7 +86,6 @@ match OverLength /\%121v.\+/
 
 set timeoutlen=1000 ttimeoutlen=10
 
-
 set bs=indent,eol,start " allow backspacing over everything in insert mode
 set ai " always set autoindenting on
 "set backup " keep a backup file
@@ -112,6 +111,13 @@ set modifiable
 set incsearch
 " highlighted search results
 set hlsearch
+
+if has('unnamedplus')
+      set clipboard=unnamedplus
+  else
+      set clipboard=unnamed
+endif
+
 
 " ======================================================================
 " =                         Bundle Vundle                              =
@@ -151,6 +157,10 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'davidhalter/jedi-vim'
 
 Plugin 'bling/vim-airline'
+
+Plugin 'terryma/vim-expand-region'
+
+Plugin 'terryma/vim-multiple-cursors'
 
 Plugin 'mattn/emmet-vim'
 
@@ -253,7 +263,6 @@ noremap <C-S-TAB> :MBEbp<CR>
 " ==================================================
 " ==================================================
 
-set clipboard=unnamedplus
 
 " Override go-to.definition key shortcut to Ctrl-]
 let g:pymode_rope_goto_definition_bind = "<C-]>"
