@@ -11,15 +11,32 @@ bundles::
     ln -s ~/.vim/vimrc ~/.vimrc
     git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
-Vim extensions:
+## Vim extensions:
+### Plugins manager
 * Vundle
+
+#### Git related
 * vim-fugitive
 * vim-gitgutter
+
+#### Handle in text
 * vim-easymotion
-* vim-colors-solarized
-* vim-autoclose
-* rainbow_paretheses
+* vim-expand-region
+* vim-multiple-cursors
 * vim-move
+* vim-autoclose
+
+#### Colors
+* vim-colors-solarized
+* rainbow_paretheses
+* airline
+
+#### Handle files
 * nerdtree
+* ctrlp
+* minibufexpl
 * tagbar
+
+### Language specific
+* emmet-vim
 
