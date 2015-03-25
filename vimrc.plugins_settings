@@ -1,0 +1,118 @@
+
+
+" ==================================================
+" =               Tagbar Mapping                   =
+" ==================================================
+" nmap <F5> :TagbarToggle<CR>
+
+" ==================================================
+" =                  NERDTree                      =
+" ==================================================
+let NERDTreeIgnore = ['\.pyc$', '\.pyo$']
+map <F3> :NERDTreeToggle<CR>
+
+" highlight cursor line
+set cursorline
+
+let g:gitgutter_sign_added = '+'
+let g:gitgutter_sign_modified = '*'
+let g:gitgutter_sign_removed = '-'
+let g:gitgutter_sign_modified_removed = '+-'
+
+
+" let g:move_key_modifier = 'C'
+
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+
+
+" hight background when lines are longer
+" let &colorcolumn=join(range(81,999),",")"
+
+" " toggle Tagbar display
+" map <F4> :TagbarToggle<CR>
+" " autofocus on Tagbar open
+" let g:tagbar_autofocus = 1
+
+" nnoremap <silent> <Leader>t :CommandT<CR>
+" nnoremap <silent> <Leader>b :CommandTBuffer<CR>
+" " tab navigation
+" map tn :tabn<CR>
+" map tp :tabp<CR>
+" map tm :tabm
+" map tt :tabnew
+" map <C-S-Right> :tabn<CR>
+" imap <C-S-Right> <ESC>:tabn<CR>
+" map <C-S-Left> :tabp<CR>
+" imap <C-S-Left> <ESC>:tabp<CR>
+
+
+" ==================================================
+" ==================================================
+
+
+" ==================================================
+" CtrlP
+" ==================================================
+set wildignore+=*.so,*.swp,*.zip,*.pyc,*.pyo
+let g:ctrlp_custom_ignore = 'node_modules\|bower_components'
+" 
+au BufEnter *.js :vmap ^_ :s/^/\/\// <Enter> :nohlsearch <Enter> 
+au BufEnter *.py :vmap ^_ :s/^/#/ <Enter> :nohlsearch <Enter>
+" 
+" " tab navigation like firefox
+" nnoremap <C-S-tab> :tabprevious<CR>
+" nnoremap <C-tab>   :tabnext<CR>
+" nnoremap <C-t>     :tabnew<CR>
+" inoremap <C-S-tab> <Esc>:tabprevious<CR>i
+" inoremap <C-tab>   <Esc>:tabnext<CR>i
+" inoremap <C-t>     <Esc>:tabnew<CR>
+" 
+" nnoremap th  :tabfirst<CR>
+" nnoremap tj  :tabnext<CR>
+" nnoremap tk  :tabprev<CR>
+" nnoremap tl  :tablast<CR>
+" nnoremap tt  :tabedit<Space>
+" nnoremap tn  :tabnext<Space>
+" nnoremap tm  :tabm<Space>
+" nnoremap td  :tabclose<CR>
+" " Alternatively use
+" " "nnoremap th :tabnext<CR>
+" " "nnoremap tl :tabprev<CR>
+" " "nnoremap tn :tabnew<CR>
+" 
+" ==================================================
+" Airline
+" ==================================================
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+ 
+if !exists('g:airline_symbols')
+        let g:airline_symbols = {}
+endif
+let g:airline_symbols.space = "\ua0"
+" unicode symbols
+" let g:airline_left_sep = '»'
+" let g:airline_left_sep = '▶'
+" let g:airline_right_sep = '«'
+" let g:airline_right_sep = '◀'
+" let g:airline_symbols.linenr = '␊'
+" let g:airline_symbols.linenr = '␤'
+" let g:airline_symbols.linenr = '¶'
+" let g:airline_symbols.branch = '⎇'
+" let g:airline_symbols.paste = 'ρ'
+" let g:airline_symbols.paste = 'Þ'
+" let g:airline_symbols.paste = '∥'
+" let g:airline_symbols.whitespace = 'Ξ'
+
+" ==================================================
+" airline, use powerline fonts
+" ==================================================
+
+
+"" zencoding settings
+" remap zen-leader-key
+let g:user_emmet_leader_key = '<c-e>'
+ 

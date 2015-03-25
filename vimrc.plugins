@@ -1,0 +1,59 @@
+" https://github.com/shaief/dotvim
+" based on the dotvim files by MeirKriheli and Oz123
+" https://github.com/MeirKriheli/dotvim
+" https://github.com/oz123/dude/config_files/vim
+
+" ======================================================================
+" =                         Bundle Vundle                              =
+" ======================================================================
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+" call vundle#begin('~/some/path/here')
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+" My Bundles here:
+" git wrapper
+Bundle 'tpope/vim-fugitive'
+" A Vim plugin which shows a git diff in the gutter (sign column)
+Bundle 'airblade/vim-gitgutter'
+" easymotion - as the name suggest :)
+Bundle 'Lokaltog/vim-easymotion'
+" color scheme - solarized
+Bundle 'altercation/vim-colors-solarized'
+" color scheme - drakula
+Plugin 'alem0lars/vim-colorscheme-darcula'
+" colorschemes
+Plugin 'flazz/vim-colorschemes'
+" Surround
+Bundle 'tpope/vim-surround'
+" Autoclose
+" Bundle 'Townk/vim-autoclose'
+Plugin 'kien/rainbow_parentheses.vim'
+" move lines/blocks like sublime
+Bundle 'matze/vim-move'
+" Directories and files tree ==> check lower configuration where it was mapped to <F3>
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdcommenter'
+
+Plugin 'majutsushi/tagbar'
+Plugin 'kien/ctrlp.vim'
+" MiniBuffferExplorer
+Plugin 'fholgado/minibufexpl.vim'
+
+" Python-mode etc.
+" Plugin 'klen/python-mode'
+" Plugin 'davidhalter/jedi-vim'
+
+Plugin 'bling/vim-airline'
+
+Plugin 'terryma/vim-expand-region'
+
+Plugin 'terryma/vim-multiple-cursors'
+
+Plugin 'mattn/emmet-vim'
+
+call vundle#end() " required
+
+
