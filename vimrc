@@ -5,10 +5,6 @@
 
 set nocompatible " Use Vim defaults (much better!)
 
-if filereadable(glob("~/.vimrc.local")) 
-        source ~/.vimrc.local
-endif
-
 if filereadable(glob("~/.vim/vimrc.basic")) 
         source ~/.vim/vimrc.basic
 endif
@@ -25,3 +21,20 @@ if filereadable(glob("~/.vim/vimrc.colorschemes"))
         source ~/.vim/vimrc.colorschemes
 endif
 
+" ==================================================
+" Allow overrides via ~/.vim/vimrc.local
+" ==================================================
+if filereadable(expand("~/.vim/vimrc.local"))
+    source ~/.vim/vimrc.local
+endif
+
+" ==================================================
+" Work specific settings
+" ==================================================
+let work=$WORK
+if work=='1'
+    silent execute "!echo Loading work specific settings"
+    if filereadable(expand("~/.vim/vimrc.work"))
+        source ~/.vim/vimrc.work
+    endif
+endif

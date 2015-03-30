@@ -115,4 +115,55 @@ let g:airline_symbols.space = "\ua0"
 "" zencoding settings
 " remap zen-leader-key
 let g:user_emmet_leader_key = '<c-e>'
- 
+
+
+
+" ==================================================
+" No modlines for security
+" ==================================================
+set modelines=0
+set nomodeline
+
+" ==================================================
+" Disable python-mode rope completion (using Jedi)
+" Disable folding
+" Don't trim whitespace on save
+" ==================================================
+let g:pymode_rope_completion = 0
+let g:pymode_folding = 0
+let g:pymode_trim_whitespaces = 0
+
+" ==================================================
+" jedi-vim use splits instead of tabs
+" ==================================================
+let g:jedi#use_tabs_not_buffers = 0
+let g:jedi#use_splits_not_buffers = "right"
+
+" ==================================================
+" gr opens Fuzzy tags search
+" ==================================================
+nmap gr :CtrlPBufTag<CR>
+let g:ctrlp_buftag_types = {
+\ 'go' : '--language-force=go --golang-types=ftv',
+\ 'coffee' : '--language-force=coffee --coffee-types=cmfvf',
+\ 'markdown' : '--language-force=markdown --markdown-types=hik',
+\ 'objc' : '--language-force=objc --objc-types=mpci',
+\ 'rc' : '--language-force=rust --rust-types=fTm'
+\ }
+
+" ==================================================
+" viewdoc uses splits, not tabs
+" ==================================================
+let g:viewdoc_open='belowright vnew'
+
+" ==================================================
+" XML folding
+" ==================================================
+let g:xml_syntax_folding=1
+au FileType xml setlocal foldmethod=syntax
+
+" ==================================================
+" JSON folding
+" ==================================================
+au FileType json setlocal foldmethod=syntax
+
